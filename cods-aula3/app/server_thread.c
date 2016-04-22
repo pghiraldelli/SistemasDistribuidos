@@ -115,7 +115,7 @@ int main(int argc, char *argv[]) {
     /* Read from stdin */
     if (FD_ISSET(STDIN_FILENO, &set)) {
       scanf("%99[^\n]%*c", str);
-      if (strncmp(str, "FIM", 3) == 0) break;
+      if (strncmp(str, "TERMINAR", 3) == 0) break;
     }
 
     /* Read from srvSock */
@@ -144,6 +144,8 @@ int main(int argc, char *argv[]) {
     }
   }
   
+  /* Fecha o socket para não receber novas conexões */
+  close(srvSock);
   printf("Server will wait for the active threads and terminate!\n");
   /* Wait for all threads to terminate */
   for(i=0; i<tid; i++) {

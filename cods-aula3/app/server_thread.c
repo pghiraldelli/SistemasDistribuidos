@@ -39,7 +39,7 @@ void realizaSubtracao(char *str){
 
 void ecoaString(char *str){
 	char* msg = strtok(NULL, " ");
-	sprintf(str, "%s\n", msg);
+	sprintf(str, "%s", msg);
 }
 
 void numClientes(char *str){

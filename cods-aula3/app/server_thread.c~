@@ -12,6 +12,7 @@ struct TArgs {
 };
 
 int qtdClientes = 0;
+int serverWaitToDie = 0;
 
 void realizaSoma(char *str){
 	int num1 = atoi(strtok(NULL, " "));
@@ -39,7 +40,7 @@ void realizaSubtracao(char *str){
 
 void ecoaString(char *str){
 	char* msg = strtok(NULL, " ");
-	sprintf(str, "%s\n", msg);
+	sprintf(str, "%s", msg);
 }
 
 void numClientes(char *str){
@@ -52,10 +53,7 @@ void chamaOperacao(char *str){
 	if (strcmp(operacao,"soma")==0) realizaSoma(str);
 	else if (strcmp(operacao,"subtrai")==0) realizaSubtracao(str);
 	else if (strcmp(operacao,"ecoa")==0) ecoaString(str);
-	else if (strcmp(operacao,"numClientes")==0){
-		printf("numClientes aqui\n");
-		numClientes(str);
-	}
+	else if (strcmp(operacao,"numClientes")==0) numClientes(str);
 }
 
 /* Handle client request */
@@ -72,7 +70,6 @@ void * HandleRequest(void *args) {
     if (ReadLine(cliSock, str, BUFSIZE-1) < 0) { 
 	ExitWithError("ReadLine() failed"); 
     } else {
-	printf("chamaoperacao\n");
 	chamaOperacao(str);
     }
     if (strncmp(str, "quit", 4) == 0) break; 

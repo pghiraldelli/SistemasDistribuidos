@@ -78,9 +78,7 @@ void * HandleRequest(void *args) {
       { ExitWithError("WriteN() failed"); }  
   }
   close(cliSock);
-  qtdClientes--; //TRATAR EXCLUSAO MUTUA
   pthread_exit(NULL);
-  
 }
 
 int main(int argc, char *argv[]) {

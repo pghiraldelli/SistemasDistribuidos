@@ -3,6 +3,6 @@
 
 ######PARA COMPILAR
 
-- gcc -c -o perfectp2p.o perfectp2p.c 
-- gcc -o p1 perfectp2p.o p1.c -std=c99 -lpthread
+gcc -c -o perfectp2p.o perfectp2p.c 
+gcc -o p1 perfectp2p.o p1.c -std=c99 -lpthread
 

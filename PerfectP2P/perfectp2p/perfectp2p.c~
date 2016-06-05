@@ -52,6 +52,6 @@ int pdelivery (char *src, char *msg) {
 
 // FairP2P init event
 void pp2pInit(int pp2psendPort, int pp2precvPort) {
-  vec_id = (char*)malloc(100*sizeof(char));
+  vec_id = = (char*)malloc(100*sizeof(char));
   fp2pInit(pp2psendPort, pp2precvPort);
 }

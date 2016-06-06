@@ -13,7 +13,7 @@
 #include <arpa/inet.h>
 
 #include <pthread.h>
-
+#include "fairp2p.h"
 #define BUFSIZE 1024
 
 // PerfectP2P init event

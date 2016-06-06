@@ -1,6 +1,7 @@
 
 /* Application to experiment the FairP2P module */
 
+#include "perfectp2p.h"
 #include "fairp2p.h"
 
 #define SENDPORT 3000
@@ -19,11 +20,11 @@ int main(int argc, char **argv) {
   if(argc < 2) 
      error("Digite <prog> <ip dest>");
 
-  fp2pInit(SENDPORT, RECVPORT);
+  pp2pInit(SENDPORT, RECVPORT);
 
   for(int i=0;i<100; i++) {
      sprintf(msg, "Msg: %d", i);
-     fp2pSend(argv[1], msg);
+     pp2pSend(argv[1], msg);
   }
 
   pthread_exit(NULL);

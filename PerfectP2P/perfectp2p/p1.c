@@ -9,8 +9,8 @@
 
 
 // !!! Must be implemented to handle the indication event !!!
-void fp2pDelivery (char *src, char *msg) {
-  printf("Recebi: %s %s\n", src, msg);
+void pp2pDelivery (char *src, char *msg) {
+  printf("Enviei: %s %s\n", src, msg);
 }   
 
 // main function

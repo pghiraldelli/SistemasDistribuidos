@@ -40,7 +40,12 @@ int fp2pSend (char *dest, char *msg) {
 
   /* send the message to the server */
   serverlen = sizeof(serveraddr);
-  return sendto(sock, msg, strlen(msg), 0, (struct sockaddr *) &serveraddr, serverlen);
+  
+  int retorno = sendto(sock, msg, strlen(msg), 0, (struct sockaddr *) &serveraddr, serverlen);
+  
+  close(sock);
+  
+  return retorno;
 }
 
 // receive a message

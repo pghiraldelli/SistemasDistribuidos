@@ -4,7 +4,7 @@
 
 #include "perfectp2p.h"
 
-const char vec_id[1000];
+const char vec_id[100][1000];
 
 int recebeuMsg(char* id){
   int i;
@@ -33,19 +33,27 @@ void pp2pSend (char *dest, char *msg) {
   }
 }
 
-// verificar se a mensagem já foi recebida, se não foi, vai chamar o delivery do fairp2p
-int pdelivery (char *src, char *msg) {
+//a camada de cima vai implementar o fairdelivery 
+void fp2pDelivery (char *src, char *msg) {
   //quebrar msg pra pegar id
-  char* id_src = strtok(msg, "|");
-  char* msgEnviar = strtok(NULL, "\n");
+  char* tmp = strtok(msg, "|");
+  char id_src[1000];
+  strcpy(id_src, tmp);
+  
+  char msgEnviar[1000];  
+  char *tmp2 = strtok(NULL, "\n");
+  strcpy(msgEnviar, tmp2);
+  
+  static int indice_vec = 0;
 
-  //sprintf
+  strcat(id_src, "|");
   strcat(id_src, src);
-
+  
   if(!recebeuMsg(id_src)){
-    delivery(src, msgEnviar);
-    //amazenar id na posição certa do vetor
+    pp2pDelivery(src, msgEnviar);
+    sprintf(vec_id[indice_vec++], "%s", id_src);
   }
+  
 }
 
 // FairP2P init event
